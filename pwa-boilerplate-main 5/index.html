@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jigisha Locator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/onsenui/css/onsen-css-components.min.css"
+    />
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/logo.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/logo.png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/logo.png"
+      sizes="16x16"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" type="text/css" href="src/app.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>MAP</h1>
+    </div>
+    <div id="map"></div>
+    <template id="page1.html">
+      <ons-page id="myLocator">
+        <ons-toolbar>
+          <div class="center">My Locator</div>
+        </ons-toolbar>
+
+        <div id="map"></div>
+      </ons-page>
+    </template>
+    <ons-dialog id="poppup">
+      <form id="form">
+        Name:<input type="text" id="Pointervalue" name="Pointervalue" />
+        <input type="submit" value="Save Marker" />
+      </form>
+    </ons-dialog>
+    <ons-button id="deletepointer">Clear Markers</ons-button>
+    <ons-button id="deletepointer">Locate Me</ons-button>
+  </body>
+
+  <script src="src/app.js"></script>
+
+  <script type="text/javascript">
+    const registerSW = async () => {
+      if ("serviceWorker" in navigator) {
+        try {
+          await navigator.serviceWorker.register(
+            `${window.location.href}service-worker.js`
+          );
+          console.log("Service Worker Registered");
+        } catch (e) {
+          console.error("Error registering Service Worker...", e);
+        }
+      }
+    };
+
+    registerSW();
+  </script>
+</html>
